@@ -16,5 +16,6 @@ pip install wasmtime
 
 To recompile `primes.wasm`:
 ```
+rustup target add wasm32-wasi
 rustc primes.rs --codegen opt-level=3 --crate-type=cdylib --target=wasm32-wasi
 ```
