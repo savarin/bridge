@@ -4,7 +4,7 @@ Simple examples for Python-Rust interop via WebAssembly.
 
 ## Commands
 
-To run benchmarks:
+To run microbenchmarks:
 ```
 python run.py
 ```
@@ -39,8 +39,8 @@ interface. This could potentially make the `.wasm` format the new standard in
 portable binaries for cross-language bridges.
 
 The example in this repo calculates the 10,000th prime number in pure Python and
-in Python with Rust via WebAssembly, with local benchmarks as follows:
+in Python with Rust via WebAssembly, with local microbenchmarks as follows:
 
-![benchmark](/benchmark.png)
+![microbenchmarks](/microbenchmarks.png)
 
 Minimal examples to compile and run WebAssembly can be found [here](https://github.com/savarin/minimal).
