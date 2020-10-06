@@ -39,7 +39,8 @@ def benchmark(expression, iterations, variant):
     for i in range(iterations):
         print("{} of {}: {}".format(i + 1, iterations, eval(expression)))
 
-    print("average time {}: {:3f}s\n".format(variant, (time.time() - start) / iterations))
+    average = (time.time() - start) / iterations
+    print("average time (out of {}) {}: {:3f}s\n".format(iterations, variant, average))
 
 
 if __name__ == "__main__":

@@ -41,6 +41,6 @@ The example in this repo calculates the 10,000th prime number in pure Python and
 in Python with Rust via WebAssembly, with local benchmarks as follows:
 
 ```
-average time Python: 5.244337s
-average time Rust: 0.393186s
+average time (out of 3) Python: 3.830613s
+average time (out of 3) Rust: 0.324900s
 ```
