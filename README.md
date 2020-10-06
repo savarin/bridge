@@ -42,7 +42,4 @@ binaries for cross-language bridges.
 The example in this repo calculates the 10,000th prime number in pure Python and
 in Python with Rust via WebAssembly, with local benchmarks as follows:
 
-```
-average time (out of 3) Python: 3.830613s
-average time (out of 3) Rust: 0.324900s
-```
+![benchmark](/benchmark.png)
