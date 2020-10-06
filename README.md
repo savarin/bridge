@@ -30,16 +30,17 @@ re: using Python to call Rust.
 
 WebAssembly is a way of taking code written in programming languages other than
 JavaScript and running that code in the browser. Running the code in the browser
-effectively means the compiled .wasm binary is agnostic to the choice of
-processor and OS. Lin Clark has an excellent series on WebAssembly [here](https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/);
-minimal  examples to compile and run WebAssembly can be found [here](https://github.com/savarin/minimal).
+effectively means the compiled `.wasm` binary is agnostic to the choice of
+processor and OS. Lin Clark has an excellent intro series on WebAssembly [here](https://hacks.mozilla.org/2017/02/a-cartoon-intro-to-webassembly/).
 
 The WebAssembly project has expanded beyond the browser, with [wasmtime](https://wasmtime.dev)
 as the independent runtime and [WASI](https://wasi.dev) as the unified systems
-interface. This could also make the .wasm format the new standard in portable
+interface. This could also make the `.wasm` format the new standard in portable
 binaries for cross-language bridges.
 
 The example in this repo calculates the 10,000th prime number in pure Python and
 in Python with Rust via WebAssembly, with local benchmarks as follows:
 
 ![benchmark](/benchmark.png)
+
+Minimal examples to compile and run WebAssembly can be found [here](https://github.com/savarin/minimal).
