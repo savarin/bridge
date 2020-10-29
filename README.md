@@ -14,10 +14,10 @@ To install `wasmtime` with `pip`:
 pip install wasmtime
 ```
 
-To recompile `primes.wasm`:
+To recompile `microbenchmarks.wasm`:
 ```
 rustup target add wasm32-wasi
-rustc primes.rs --codegen opt-level=3 --crate-type=cdylib --target=wasm32-wasi
+rustc lib.rs --codegen opt-level=3 --crate-type=cdylib --target=wasm32-wasi
 ```
 
 ## Context
@@ -38,9 +38,10 @@ as the independent runtime and [WASI](https://wasi.dev) as the unified systems
 interface. This could potentially make the `.wasm` format the new standard in
 portable binaries for cross-language bridges.
 
-The example in this repo calculates the 10,000th prime number in pure Python and
-in Python with Rust via WebAssembly, with local microbenchmarks as follows:
+The example in this repo calculates in pure Python and in Python with Rust via
+WebAssembly (1) the 10,000th prime number, (2) pi, and (3) the 25th Fibonacci
+number, with local microbenchmarks as follows:
 
-![microbenchmarks](/microbenchmarks.png)
+![microbenchmarks](/chart.png)
 
 Minimal examples to compile and run WebAssembly can be found [here](https://github.com/savarin/minimal).

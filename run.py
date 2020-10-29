@@ -2,10 +2,10 @@ import time
 
 import wasmtime.loader
 
-import primes
+import lib
 
 
-def nth(n):
+def prime(n):
     # type: (int) -> int
     """Calculates the nth prime number."""
     if n == 0:
@@ -31,18 +31,56 @@ def nth(n):
     return primes[n - 1]
 
 
+def pi():
+    # type: () -> float
+    """Calculates pi, as per https://github.com/JuliaLang/Microbenchmarks"""
+    sum = 0.0
+
+    for j in range(1, 501):
+        sum = 0.0
+
+        for k in range(1, 10001):
+            sum += 1.0 / (k * k)
+
+    return sum
+
+
+def fibonacci(n):
+    # type: (int) -> int
+    """Calculates the nth Fibonacci number, as per https://github.com/JuliaLang/Microbenchmarks"""
+    if n < 2:
+        return n
+
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+
 def benchmark(expression, iterations, variant):
     # type: (str, int, str) -> None
     """Run benchmark on expression eval."""
     start = time.time()
 
     for i in range(iterations):
-        print("{} of {}: {}".format(i + 1, iterations, eval(expression)))
+        result = eval(expression)
 
     average = (time.time() - start) / iterations
-    print("average time (out of {}) {}: {:3f}s\n".format(iterations, variant, average))
+    print("average time (out of {}) {}: {:3f}s".format(iterations, variant, average))
 
 
 if __name__ == "__main__":
-    benchmark("nth(10000)", 3, "Python")
-    benchmark("primes.nth(10000)", 3, "Rust")
+    print("Calculating 10,000th prime number")
+    assert prime(10000) == 104743
+    assert lib.prime(10000) == 104743
+    benchmark("prime(10000)", 3, "Python")
+    benchmark("lib.prime(10000)", 3, "Rust")
+
+    print("\nCalculating pi")
+    assert abs(pi() - 1.644834071848065) < 1e-6
+    assert abs(lib.pi() - 1.644834071848065) < 1e-6
+    benchmark("pi()", 3, "Python")
+    benchmark("lib.pi()", 3, "Rust")
+
+    print("\nCalculating 25th Fibonacci number")
+    assert fibonacci(25) == 75025
+    assert lib.fibonacci(25) == 75025
+    benchmark("fibonacci(25)", 3, "Python")
+    benchmark("lib.fibonacci(25)", 3, "Rust")
